@@ -1,0 +1,11 @@
+extends ./layouts/default.jade
+
+block title
+  title AngularJS Demo
+  
+block content
+  .panel
+    .page-header
+      h1 AngularJS App
+    h2(ng-controller="TodayCtrl" highlight="Tuesday") Today is {{day || "(unknown)" | dayName}}
+    h2(ng-controller="TomorrowCtrl" highlight="Wednesday") Tomorrow is {{day || "(unknown)" | dayName}}

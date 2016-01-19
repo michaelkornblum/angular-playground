@@ -1,0 +1,8 @@
+require './templates.coffee'
+require './scripts.coffee'
+require './images.coffee'
+require './styles.coffee'
+require './server.coffee'
+require './watcher.coffee'
+require './default.coffee'
+require './lib.coffee'

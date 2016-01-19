@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exampleApp">
+  <head>
+    <title>AngularJS Demo</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="scripts/app.js"></script>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="page-header">
+        <h1>AngularJS App</h1>
+      </div>
+      <h2 ng-controller="TodayCtrl" highlight="Tuesday">Today is {{day || "(unknown)" | dayName}}</h2>
+      <h2 ng-controller="TomorrowCtrl" highlight="Wednesday">Tomorrow is {{day || "(unknown)" | dayName}}</h2>
+    </div>
+  </body>
+</html>
