@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="exampleApp">
   <head>
-    <title>AngularJS Demo</title>
+    <title>Directives</title>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
     <script src="scripts/app.js"></script>
   </head>
   <body>
-    <div class="panel">
-      <div class="page-header">
-        <h1>AngularJS App</h1>
+    <div id="todoPanel" ng-controller="DefaultCtrl" class="panel">
+      <h1 class="panel-header">To Do List</h1>
+      <div class="well">
+        <div ng-repeat="button in ['None', 'Table', 'List']" class="radio">
+          <label ng-cloak>
+            <input type="radio" ng-model="data.mode" value="{{button}}" ng-checked="$first"> {{button}}
+          </label>
+        </div>
       </div>
-      <h2 ng-controller="TodayCtrl" highlight="Tuesday">Today is {{day || "(unknown)" | dayName}}</h2>
-      <h2 ng-controller="TomorrowCtrl" highlight="Wednesday">Tomorrow is {{day || "(unknown)" | dayName}}</h2>
+      <div ng-switch on="data.mode" ng-cloak>
+        <div ng-switch-when="Table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th># </th>
+                <th>Action  </th>
+                <th>Done</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in todos" ng-class="$odd ? 'odd' : 'even'">
+                <td>{{$index + 1}}</td>
+                <td ng-repeat="prop in item">{{prop}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div ng-switch-when="List">
+          <ol>
+            <li ng-repeat="item in todos">{{item.action}} <span ng-if="item.complete">(Done)</span></li>
+          </ol>
+        </div>
+        <div ng-switch-default>Select another option to display a layout.</div>
+      </div>
     </div>
   </body>
 </html>

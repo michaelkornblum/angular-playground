@@ -1,11 +1,27 @@
 extends ./layouts/default.jade
 
 block title
-  title AngularJS Demo
+  title Directives
   
 block content
-  .panel
-    .page-header
-      h1 AngularJS App
-    h2(ng-controller="TodayCtrl" highlight="Tuesday") Today is {{day || "(unknown)" | dayName}}
-    h2(ng-controller="TomorrowCtrl" highlight="Wednesday") Tomorrow is {{day || "(unknown)" | dayName}}
+  #todoPanel.panel(ng-controller="DefaultCtrl")
+    h1.panel-header To Do List
+    .well
+      .radio(ng-repeat="button in ['None', 'Table', 'List']")
+        label(ng-cloak) #[input(type="radio" ng-model="data.mode" value="{{button}}" ng-checked="$first")] {{button}}
+    div(ng-switch on="data.mode" ng-cloak)
+      div(ng-switch-when="Table")
+        table.table
+          thead
+            tr
+              th # 
+              th Action  
+              th Done
+          tbody
+            tr(ng-repeat="item in todos" ng-class="$odd ? 'odd' : 'even'")
+              td {{$index + 1}}
+              td(ng-repeat="prop in item") {{prop}}
+      div(ng-switch-when="List")
+        ol
+          li(ng-repeat="item in todos") {{item.action}} #[span(ng-if="item.complete") (Done)]
+      div(ng-switch-default) Select another option to display a layout.
