@@ -5,23 +5,7 @@ block title
   
 block content
   #todoPanel.panel(ng-controller="DefaultCtrl")
-    h1.panel-header To Do List
-    .well
-      .radio(ng-repeat="button in ['None', 'Table', 'List']")
-        label(ng-cloak) #[input(type="radio" ng-model="data.mode" value="{{button}}" ng-checked="$first")] {{button}}
-    div(ng-switch on="data.mode" ng-cloak)
-      div(ng-switch-when="Table")
-        table.table
-          thead
-            tr
-              th # 
-              th Action  
-              th Done
-          tbody
-            tr(ng-repeat="item in todos" ng-class="$odd ? 'odd' : 'even'")
-              td {{$index + 1}}
-              td(ng-repeat="prop in item") {{prop}}
-      div(ng-switch-when="List")
-        ol
-          li(ng-repeat="item in todos") {{item.action}} #[span(ng-if="item.complete") (Done)]
-      div(ng-switch-default) Select another option to display a layout.
+    h1.panel-header To do List
+    .checkbox.well
+      label #[input(type="checkbox" ng-model="dataValue")] Set the data Value
+    button.btn.btn-success(ng-disabled="dataValue") My Button
