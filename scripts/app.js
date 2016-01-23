@@ -1,4 +1,4 @@
-require('angular').module('exampleApp', []);
+angular.module('exampleApp', []);
 require('./controllers');
 require('./directives');
 require('./filters');

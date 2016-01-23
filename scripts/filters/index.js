@@ -1,2 +1,2 @@
-require('angular').module('exampleApp')
+angular.module('exampleApp')
   .filter("dayName", [require('./day-name.js')]);

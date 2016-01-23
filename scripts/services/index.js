@@ -1,3 +1,3 @@
-require('angular').module('exampleApp')
+angular.module('exampleApp')
   .value("nowValue", new Date())
   .service("days", ["nowValue", require('./days')]);
